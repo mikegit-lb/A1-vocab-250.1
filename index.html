@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A2+ Vocabulary Builder | 250 Essential Words</title>
+    <style>
+        /* ─── Reset & Base ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fb;
+            color: #1e2a3a;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ─── Header ─── */
+        header {
+            text-align: center;
+            padding: 30px 20px 20px;
+            background: linear-gradient(135deg, #1e3a5f, #2a5f7a);
+            color: #fff;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-top: 6px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ─── Tab Navigation ─── */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .tab-btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: #e8ecf2;
+            color: #1e2a3a;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        .tab-btn:hover {
+            background: #d0d8e4;
+            transform: translateY(-2px);
+        }
+        .tab-btn.active {
+            background: #1e3a5f;
+            color: #fff;
+            box-shadow: 0 6px 18px rgba(30, 58, 95, 0.35);
+        }
+
+        /* ─── Tab Content ─── */
+        .tab-panel {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+        .tab-panel.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ─── Card ─── */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            margin-bottom: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card h2 .emoji {
+            font-size: 1.5rem;
+        }
+        .card-sub {
+            color: #5a6a7a;
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+        }
+
+        /* ─── WORD LIST (Tab 1) — improved visuals ─── */
+        .category-block {
+            margin-bottom: 32px;
+        }
+        .category-block h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            border-bottom: 3px solid #e8ecf2;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+        }
+        .word-card {
+            background: #fafcff;
+            border-radius: 14px;
+            padding: 14px 18px;
+            border: 1px solid #e8ecf2;
+            transition: all 0.2s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+        }
+        .word-card:hover {
+            border-color: #b0c4dd;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+            background: #ffffff;
+        }
+        .word-card .w {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1e2a3a;
+        }
+        .word-card .d {
+            color: #4a5a6a;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            border-top: 1px dashed #dde3ec;
+            padding-top: 6px;
+        }
+        .word-card .d::before {
+            content: "🇹🇷 ";
+            font-size: 0.8rem;
+        }
+
+        /* ─── DRAG & DROP (Tab 2) ─── */
+        .dd-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .dd-stats .score {
+            font-weight: 700;
+            font-size: 1.05rem;
+            background: #eef3f9;
+            padding: 6px 18px;
+            border-radius: 30px;
+        }
+        .dd-stats .score span {
+            color: #1e3a5f;
+        }
+        .dd-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .dd-controls button {
+            padding: 8px 22px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #e8ecf2;
+            color: #1e2a3a;
+        }
+        .dd-controls button:hover {
+            background: #d0d8e4;
+        }
+        .dd-controls button.primary {
+            background: #1e3a5f;
+            color: #fff;
+        }
+        .dd-controls button.primary:hover {
+            background: #152c47;
+            transform: scale(1.02);
+        }
+        .dd-controls button.success {
+            background: #1e7e34;
+            color: #fff;
+        }
+        .dd-controls button.success:hover {
+            background: #16662a;
+        }
+        .dd-controls button:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .dd-board {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            min-height: 320px;
+        }
+        .dd-col {
+            flex: 1 1 280px;
+            min-width: 220px;
+        }
+        .dd-col h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #5a6a7a;
+            margin-bottom: 12px;
+            border-bottom: 2px dashed #dde3ec;
+            padding-bottom: 6px;
+        }
+
+        .dd-word {
+            background: #fff;
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 2px solid #dde3ec;
+            margin-bottom: 10px;
+            cursor: grab;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.15s;
+            user-select: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .dd-word:active {
+            cursor: grabbing;
+        }
+        .dd-word.dragging {
+            opacity: 0.4;
+            border-style: dashed;
+        }
+        .dd-word.dropped {
+            background: #e6f0e6;
+            border-color: #2a7a4a;
+            cursor: default;
+            opacity: 0.7;
+        }
+        .dd-word.dropped .check {
+            color: #1e7e34;
+            font-weight: 700;
+        }
+        .dd-word.wrong {
+            background: #fde8e8;
+            border-color: #b33a3a;
+            animation: shake 0.4s ease;
+        }
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-8px);
+            }
+            75% {
+                transform: translateX(8px);
+            }
+        }
+
+        .dd-def {
+            background: #f8faff;
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 2px dashed #c8d2e0;
+            margin-bottom: 10px;
+            min-height: 52px;
+            font-size: 0.95rem;
+            color: #2a3a4a;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .dd-def.highlight {
+            border-color: #1e3a5f;
+            background: #eef3f9;
+        }
+        .dd-def.filled {
+            border-style: solid;
+            border-color: #2a7a4a;
+            background: #eaf5ea;
+        }
+        .dd-def.filled .word-insert {
+            font-weight: 700;
+            color: #1e3a5f;
+            background: #d4e2f0;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-right: 6px;
+        }
+        .dd-def .word-insert {
+            font-weight: 700;
+            color: #1e3a5f;
+        }
+
+        .dd-empty {
+            color: #8a9aaa;
+            font-style: italic;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .dd-message {
+            text-align: center;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 16px;
+        }
+        .dd-message.success {
+            background: #e6f5ea;
+            color: #1a6a32;
+        }
+        .dd-message.error {
+            background: #fde8e8;
+            color: #a33a3a;
+        }
+
+        /* ─── SPEAKING QUESTIONS (Tab 3) ─── */
+        .sq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+        .sq-item {
+            background: #f8faff;
+            border-radius: 14px;
+            padding: 18px 22px;
+            border-left: 5px solid #1e3a5f;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s;
+        }
+        .sq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+        .sq-item .sq-num {
+            font-weight: 700;
+            color: #1e3a5f;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-right: 8px;
+        }
+        .sq-item .sq-text {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .sq-item .sq-tags {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .sq-item .sq-tags span {
+            background: #e8ecf2;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #2a4a6a;
+            letter-spacing: 0.3px;
+        }
+
+        /* ─── SCENARIOS (Tab 4) ─── */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        .scenario-card {
+            background: #fafcff;
+            border-radius: 18px;
+            padding: 22px 24px;
+            border: 1px solid #e8ecf2;
+            transition: all 0.25s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+        .scenario-card:hover {
+            border-color: #b8c8dd;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+        }
+        .scenario-card .sc-icon {
+            font-size: 2rem;
+            margin-bottom: 6px;
+        }
+        .scenario-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 6px;
+        }
+        .scenario-card .sc-desc {
+            color: #3a4a5a;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .scenario-card .sc-words {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+            border-top: 1px solid #e8ecf2;
+            padding-top: 12px;
+        }
+        .scenario-card .sc-words span {
+            background: #eef3f9;
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1e3a5f;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 680px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+            .card {
+                padding: 18px 16px;
+            }
+            .dd-board {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .dd-col {
+                flex: 1 1 auto;
+                min-width: 0;
+            }
+            .word-grid {
+                grid-template-columns: 1fr;
+            }
+            .sq-grid {
+                grid-template-columns: 1fr;
+            }
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            .dd-stats {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .dd-controls {
+                justify-content: center;
+            }
+        }
+
+        /* ─── Scrollbar ─── */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #eef2f7;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b8c8dd;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8aa0bb;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .mt-12 {
+            margin-top: 12px;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ═══ HEADER ═══ -->
+        <header>
+            <h1>📚 A2+ Temel Kelime Listesi</h1>
+            <p>Günlük İngilizce için 250 olmazsa olmaz kelime</p>
+            <span class="badge">⭐ CEFR A2+ · Orta-Altı Seviye</span>
+        </header>
+
+        <!-- ═══ TABS ═══ -->
+        <div class="tabs" id="tabNav">
+            <button class="tab-btn active" data-tab="list">📖 Kelime Listesi</button>
+            <button class="tab-btn" data-tab="dragdrop">🧩 Eşleştirme Oyunu</button>
+            <button class="tab-btn" data-tab="speaking">🗣️ Konuşma Soruları</button>
+            <button class="tab-btn" data-tab="scenarios">🌍 Günlük Durumlar</button>
+        </div>
+
+        <!-- ════════════════════════════════════════════ -->
+        <!-- TAB 1: WORD LIST (Turkish definitions)    -->
+        <!-- ════════════════════════════════════════════ -->
+        <div class="tab-panel active" id="panel-list">
+            <div class="card">
+                <h2><span class="emoji">📖</span> 250 Temel Kelime</h2>
+                <p class="card-sub">Kategorilere ayrılmıştır — hepsini öğrenin!</p>
+                <div id="wordListContainer"></div>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════ -->
+        <!-- TAB 2: DRAG & DROP (Turkish meanings)    -->
+        <!-- ════════════════════════════════════════════ -->
+        <div class="tab-panel" id="panel-dragdrop">
+            <div class="card">
+                <h2><span class="emoji">🧩</span> Kelime – Türkçe Anlam Eşleştirme</h2>
+                <p class="card-sub">Her İngilizce kelimeyi doğru Türkçe anlamına sürükleyin.</p>
+
+                <div class="dd-stats">
+                    <div class="score">✅ <span id="ddScore">0</span> / <span id="ddTotal">0</span> eşleşti</div>
+                    <div class="dd-controls">
+                        <button class="primary" id="ddNewSet">🔄 Yeni Set</button>
+                        <button class="success" id="ddReset">↺ Sıfırla</button>
+                    </div>
+                </div>
+
+                <div class="dd-board" id="ddBoard">
+                    <!-- Sol: kelimeler -->
+                    <div class="dd-col" id="ddWordsCol">
+                        <h4>📌 İngilizce Kelimeler</h4>
+                        <div id="ddWordsList"></div>
+                    </div>
+                    <!-- Sağ: Türkçe anlamlar -->
+                    <div class="dd-col" id="ddDefsCol">
+                        <h4>🇹🇷 Türkçe Anlamlar</h4>
+                        <div id="ddDefsList"></div>
+                    </div>
+                </div>
+
+                <div id="ddMessage" class="dd-message hidden"></div>
+                <div class="text-center mt-12" style="font-size:0.9rem; color:#5a6a7a;">
+                    💡 Bir kelimeyi soldan sağdaki doğru anlamının üzerine sürükleyin.
+                </div>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════ -->
+        <!-- TAB 3: SPEAKING QUESTIONS                 -->
+        <!-- ════════════════════════════════════════════ -->
+        <div class="tab-panel" id="panel-speaking">
+            <div class="card">
+                <h2><span class="emoji">🗣️</span> Konuşma Soruları</h2>
+                <p class="card-sub">Bu soruları bir arkadaşınızla veya kendi kendinize pratik yapın.</p>
+                <div id="speakingContainer"></div>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════ -->
+        <!-- TAB 4: SCENARIOS                         -->
+        <!-- ════════════════════════════════════════════ -->
+        <div class="tab-panel" id="panel-scenarios">
+            <div class="card">
+                <h2><span class="emoji">🌍</span> Gerçek Hayat Durumları</h2>
+                <p class="card-sub">Bu kelimelerin günlük hayatta nasıl bir arada kullanıldığını görün.</p>
+                <div id="scenariosContainer"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ════════════════════════════════════════════════════════
+        //  DATA: 250 ESSENTIAL WORDS with TURKISH definitions
+        // ════════════════════════════════════════════════════════
+
+        const vocabulary = {
+            // ─── Günlük Hayat & Rutin ───
+            'Günlük Hayat': [
+                { word: 'wake up', definition: 'uyanmak, yataktan kalkmak' },
+                { word: 'get dressed', definition: 'giyinmek' },
+                { word: 'have breakfast', definition: 'kahvaltı yapmak' },
+                { word: 'go to work', definition: 'işe gitmek' },
+                { word: 'come home', definition: 'eve gelmek' },
+                { word: 'have dinner', definition: 'akşam yemeği yemek' },
+                { word: 'go to bed', definition: 'yatmak, uyumaya gitmek' },
+                { word: 'take a shower', definition: 'duş almak' },
+                { word: 'brush your teeth', definition: 'diş fırçalamak' },
+                { word: 'get up', definition: 'kalkmak (yataktan)' },
+                { word: 'go out', definition: 'dışarı çıkmak' },
+                { word: 'stay home', definition: 'evde kalmak' },
+                { word: 'do the dishes', definition: 'bulaşık yıkamak' },
+                { word: 'do the laundry', definition: 'çamaşır yıkamak' },
+                { word: 'make the bed', definition: 'yatağı toplamak' },
+            ],
+            // ─── İş & Eğitim ───
+            'İş & Eğitim': [
+                { word: 'office', definition: 'ofis, iş yeri' },
+                { word: 'meeting', definition: 'toplantı' },
+                { word: 'computer', definition: 'bilgisayar' },
+                { word: 'email', definition: 'e-posta' },
+                { word: 'report', definition: 'rapor' },
+                { word: 'boss', definition: 'patron, amir' },
+                { word: 'colleague', definition: 'iş arkadaşı' },
+                { word: 'homework', definition: 'ev ödevi' },
+                { word: 'teacher', definition: 'öğretmen' },
+                { word: 'student', definition: 'öğrenci' },
+                { word: 'classroom', definition: 'sınıf (oda)' },
+                { word: 'exam', definition: 'sınav' },
+                { word: 'grade', definition: 'not, puan' },
+                { word: 'project', definition: 'proje' },
+                { word: 'presentation', definition: 'sunum' },
+            ],
+            // ─── Seyahat & Ulaşım ───
+            'Seyahat & Ulaşım': [
+                { word: 'airport', definition: 'havalimanı' },
+                { word: 'ticket', definition: 'bilet' },
+                { word: 'passport', definition: 'pasaport' },
+                { word: 'hotel', definition: 'otel' },
+                { word: 'reservation', definition: 'rezervasyon' },
+                { word: 'bus', definition: 'otobüs' },
+                { word: 'train', definition: 'tren' },
+                { word: 'plane', definition: 'uçak' },
+                { word: 'car', definition: 'araba' },
+                { word: 'bicycle', definition: 'bisiklet' },
+                { word: 'travel', definition: 'seyahat etmek' },
+                { word: 'tourist', definition: 'turist' },
+                { word: 'map', definition: 'harita' },
+                { word: 'luggage', definition: 'bagaj' },
+                { word: 'delay', definition: 'gecikme' },
+            ],
+            // ─── Yemek & Restoran ───
+            'Yemek & Restoran': [
+                { word: 'restaurant', definition: 'restoran' },
+                { word: 'menu', definition: 'menü' },
+                { word: 'order', definition: 'sipariş vermek' },
+                { word: 'delicious', definition: 'lezzetli' },
+                { word: 'breakfast', definition: 'kahvaltı' },
+                { word: 'lunch', definition: 'öğle yemeği' },
+                { word: 'dinner', definition: 'akşam yemeği' },
+                { word: 'cook', definition: 'pişirmek (yemek)' },
+                { word: 'bake', definition: 'fırında pişirmek' },
+                { word: 'fry', definition: 'kızartmak' },
+                { word: 'boil', definition: 'haşlamak, kaynatmak' },
+                { word: 'taste', definition: 'tat, lezzet' },
+                { word: 'hungry', definition: 'aç' },
+                { word: 'thirsty', definition: 'susamış' },
+                { word: 'meal', definition: 'öğün' },
+            ],
+            // ─── Sağlık & Vücut ───
+            'Sağlık & Vücut': [
+                { word: 'doctor', definition: 'doktor' },
+                { word: 'hospital', definition: 'hastane' },
+                { word: 'medicine', definition: 'ilaç' },
+                { word: 'appointment', definition: 'randevu' },
+                { word: 'headache', definition: 'baş ağrısı' },
+                { word: 'stomachache', definition: 'karın ağrısı' },
+                { word: 'fever', definition: 'ateş' },
+                { word: 'cough', definition: 'öksürük' },
+                { word: 'cold', definition: 'nezle, soğuk algınlığı' },
+                { word: 'exercise', definition: 'egzersiz yapmak' },
+                { word: 'healthy', definition: 'sağlıklı' },
+                { word: 'sick', definition: 'hasta' },
+                { word: 'tired', definition: 'yorgun' },
+                { word: 'pain', definition: 'ağrı' },
+                { word: 'rest', definition: 'dinlenmek' },
+            ],
+            // ─── Aile & İlişkiler ───
+            'Aile & İlişkiler': [
+                { word: 'mother', definition: 'anne' },
+                { word: 'father', definition: 'baba' },
+                { word: 'brother', definition: 'erkek kardeş' },
+                { word: 'sister', definition: 'kız kardeş' },
+                { word: 'grandmother', definition: 'büyükanne' },
+                { word: 'grandfather', definition: 'büyükbaba' },
+                { word: 'aunt', definition: 'teyze, hala' },
+                { word: 'uncle', definition: 'amca, dayı' },
+                { word: 'cousin', definition: 'kuzen' },
+                { word: 'friend', definition: 'arkadaş' },
+                { word: 'neighbor', definition: 'komşu' },
+                { word: 'partner', definition: 'partner, eş' },
+                { word: 'child', definition: 'çocuk' },
+                { word: 'parent', definition: 'ebeveyn' },
+                { word: 'family', definition: 'aile' },
+            ],
+            // ─── Duygular & Hisler ───
+            'Duygular & Hisler': [
+                { word: 'happy', definition: 'mutlu' },
+                { word: 'sad', definition: 'üzgün' },
+                { word: 'angry', definition: 'kızgın' },
+                { word: 'tired', definition: 'yorgun' },
+                { word: 'excited', definition: 'heyecanlı' },
+                { word: 'nervous', definition: 'gergin, endişeli' },
+                { word: 'scared', definition: 'korkmuş' },
+                { word: 'surprised', definition: 'şaşırmış' },
+                { word: 'bored', definition: 'sıkılmış' },
+                { word: 'confused', definition: 'kafası karışık' },
+                { word: 'worried', definition: 'endişeli' },
+                { word: 'proud', definition: 'gururlu' },
+                { word: 'lonely', definition: 'yalnız' },
+                { word: 'calm', definition: 'sakin' },
+                { word: 'stress', definition: 'stres' },
+            ],
+            // ─── Hava Durumu & Doğa ───
+            'Hava & Doğa': [
+                { word: 'sunny', definition: 'güneşli' },
+                { word: 'rainy', definition: 'yağmurlu' },
+                { word: 'cold', definition: 'soğuk' },
+                { word: 'hot', definition: 'sıcak' },
+                { word: 'windy', definition: 'rüzgarlı' },
+                { word: 'cloudy', definition: 'bulutlu' },
+                { word: 'snow', definition: 'kar' },
+                { word: 'storm', definition: 'fırtına' },
+                { word: 'temperature', definition: 'sıcaklık' },
+                { word: 'weather', definition: 'hava durumu' },
+                { word: 'season', definition: 'mevsim' },
+                { word: 'spring', definition: 'ilkbahar' },
+                { word: 'summer', definition: 'yaz' },
+                { word: 'autumn', definition: 'sonbahar' },
+                { word: 'winter', definition: 'kış' },
+            ],
+            // ─── Alışveriş & Para ───
+            'Alışveriş & Para': [
+                { word: 'shop', definition: 'mağaza' },
+                { word: 'store', definition: 'dükkan' },
+                { word: 'price', definition: 'fiyat' },
+                { word: 'money', definition: 'para' },
+                { word: 'buy', definition: 'satın almak' },
+                { word: 'sell', definition: 'satmak' },
+                { word: 'pay', definition: 'ödemek' },
+                { word: 'cash', definition: 'nakit' },
+                { word: 'card', definition: 'kart (kredi/banka)' },
+                { word: 'cheap', definition: 'ucuz' },
+                { word: 'expensive', definition: 'pahalı' },
+                { word: 'sale', definition: 'indirim' },
+                { word: 'discount', definition: 'indirim' },
+                { word: 'receipt', definition: 'fiş, makbuz' },
+                { word: 'change', definition: 'para üstü' },
+            ],
+            // ─── Yerler & Binalar ───
+            'Yerler & Binalar': [
+                { word: 'library', definition: 'kütüphane' },
+                { word: 'museum', definition: 'müze' },
+                { word: 'park', definition: 'park' },
+                { word: 'bank', definition: 'banka' },
+                { word: 'station', definition: 'istasyon' },
+                { word: 'church', definition: 'kilise' },
+                { word: 'school', definition: 'okul' },
+                { word: 'university', definition: 'üniversite' },
+                { word: 'shop', definition: 'mağaza' },
+                { word: 'cafe', definition: 'kafe' },
+                { word: 'bridge', definition: 'köprü' },
+                { word: 'square', definition: 'meydan' },
+                { word: 'building', definition: 'bina' },
+                { word: 'street', definition: 'cadde, sokak' },
+                { word: 'city', definition: 'şehir' },
+            ],
+            // ─── Zaman & Tarih ───
+            'Zaman & Tarih': [
+                { word: 'Monday', definition: 'Pazartesi' },
+                { word: 'Tuesday', definition: 'Salı' },
+                { word: 'Wednesday', definition: 'Çarşamba' },
+                { word: 'Thursday', definition: 'Perşembe' },
+                { word: 'Friday', definition: 'Cuma' },
+                { word: 'Saturday', definition: 'Cumartesi' },
+                { word: 'Sunday', definition: 'Pazar' },
+                { word: 'morning', definition: 'sabah' },
+                { word: 'afternoon', definition: 'öğleden sonra' },
+                { word: 'evening', definition: 'akşam' },
+                { word: 'night', definition: 'gece' },
+                { word: 'hour', definition: 'saat (zaman birimi)' },
+                { word: 'minute', definition: 'dakika' },
+                { word: 'week', definition: 'hafta' },
+                { word: 'month', definition: 'ay' },
+            ],
+            // ─── Sıfatlar ───
+            'Sıfatlar': [
+                { word: 'big', definition: 'büyük' },
+                { word: 'small', definition: 'küçük' },
+                { word: 'good', definition: 'iyi' },
+                { word: 'bad', definition: 'kötü' },
+                { word: 'long', definition: 'uzun' },
+                { word: 'short', definition: 'kısa (uzunluk)' },
+                { word: 'tall', definition: 'uzun boylu' },
+                { word: 'short', definition: 'kısa boylu' },
+                { word: 'beautiful', definition: 'güzel' },
+                { word: 'ugly', definition: 'çirkin' },
+                { word: 'young', definition: 'genç' },
+                { word: 'old', definition: 'yaşlı' },
+                { word: 'easy', definition: 'kolay' },
+                { word: 'difficult', definition: 'zor' },
+                { word: 'important', definition: 'önemli' },
+            ],
+            // ─── Fiiller ───
+            'Fiiller': [
+                { word: 'go', definition: 'gitmek' },
+                { word: 'come', definition: 'gelmek' },
+                { word: 'do', definition: 'yapmak' },
+                { word: 'make', definition: 'yapmak, üretmek' },
+                { word: 'have', definition: 'sahip olmak' },
+                { word: 'take', definition: 'almak' },
+                { word: 'give', definition: 'vermek' },
+                { word: 'see', definition: 'görmek' },
+                { word: 'look', definition: 'bakmak' },
+                { word: 'hear', definition: 'duymak' },
+                { word: 'speak', definition: 'konuşmak (dil)' },
+                { word: 'talk', definition: 'konuşmak, sohbet etmek' },
+                { word: 'tell', definition: 'söylemek, anlatmak' },
+                { word: 'ask', definition: 'sormak' },
+                { word: 'know', definition: 'bilmek' },
+            ],
+            // ─── Zarflar ───
+            'Zarflar': [
+                { word: 'always', definition: 'her zaman' },
+                { word: 'usually', definition: 'genellikle' },
+                { word: 'sometimes', definition: 'bazen' },
+                { word: 'never', definition: 'asla' },
+                { word: 'often', definition: 'sık sık' },
+                { word: 'rarely', definition: 'nadiren' },
+                { word: 'already', definition: 'zaten, çoktan' },
+                { word: 'still', definition: 'hâlâ' },
+                { word: 'just', definition: 'henüz, az önce' },
+                { word: 'yet', definition: 'henüz (olumsuz/soru)' },
+                { word: 'very', definition: 'çok' },
+                { word: 'too', definition: 'çok (aşırı)' },
+                { word: 'quite', definition: 'oldukça' },
+                { word: 'really', definition: 'gerçekten' },
+                { word: 'well', definition: 'iyi (zarf)' },
+            ],
+            // ─── Teknoloji & İletişim ───
+            'Teknoloji': [
+                { word: 'phone', definition: 'telefon' },
+                { word: 'internet', definition: 'internet' },
+                { word: 'computer', definition: 'bilgisayar' },
+                { word: 'email', definition: 'e-posta' },
+                { word: 'website', definition: 'web sitesi' },
+                { word: 'social media', definition: 'sosyal medya' },
+                { word: 'message', definition: 'mesaj' },
+                { word: 'video', definition: 'video' },
+                { word: 'photo', definition: 'fotoğraf' },
+                { word: 'screen', definition: 'ekran' },
+                { word: 'keyboard', definition: 'klavye' },
+                { word: 'download', definition: 'indirmek' },
+                { word: 'upload', definition: 'yüklemek' },
+                { word: 'password', definition: 'şifre' },
+                { word: 'file', definition: 'dosya' },
+            ],
+        };
+
+        // ─── Flatten all words for easy access ───
+        const allWords = [];
+        const allDefs = {};
+        for (const [cat, items] of Object.entries(vocabulary)) {
+            for (const item of items) {
+                allWords.push(item.word);
+                allDefs[item.word] = item.definition;
+            }
+        }
+
+        // ─── Speaking Questions (unchanged) ───
+        const speakingQuestions = [{
+            q: 'What time do you usually wake up in the morning?',
+            tags: ['daily routine', 'time']
+        }, {
+            q: 'How do you usually get to work or school?',
+            tags: ['travel', 'transport']
+        }, {
+            q: 'What is your favorite food? Why do you like it?',
+            tags: ['food', 'opinion']
+        }, {
+            q: 'Tell me about your best friend. What do you like about them?',
+            tags: ['family', 'relationships']
+        }, {
+            q: 'Have you ever been to another country? Where did you go?',
+            tags: ['travel', 'experience']
+        }, {
+            q: 'What do you like to do on the weekend?',
+            tags: ['daily life', 'hobbies']
+        }, {
+            q: 'How do you feel when you have an exam or a job interview?',
+            tags: ['emotions', 'work']
+        }, {
+            q: 'What is the weather like today? Do you like it?',
+            tags: ['weather', 'opinion']
+        }, {
+            q: 'How often do you use the internet? What for?',
+            tags: ['technology', 'daily life']
+        }, {
+            q: 'What was the last thing you bought? Was it expensive?',
+            tags: ['shopping', 'money']
+        }, {
+            q: 'Do you prefer living in a city or in the countryside? Why?',
+            tags: ['places', 'opinion']
+        }, {
+            q: 'What do you do to stay healthy?',
+            tags: ['health', 'routine']
+        }, {
+            q: 'Who is the most important person in your family? Why?',
+            tags: ['family', 'relationships']
+        }, {
+            q: 'What did you do last weekend? Describe your day.',
+            tags: ['daily life', 'past tense']
+        }, {
+            q: 'Do you like cooking? What can you cook well?',
+            tags: ['food', 'skills']
+        }, {
+            q: 'What makes you happy? Can you give an example?',
+            tags: ['emotions', 'opinion']
+        }, {
+            q: 'How do you usually travel when you go on holiday?',
+            tags: ['travel', 'transport']
+        }, {
+            q: 'What is your favorite season and why?',
+            tags: ['weather', 'opinion']
+        }, {
+            q: 'Do you enjoy studying English? What is difficult for you?',
+            tags: ['education', 'opinion']
+        }, {
+            q: 'What would you do if you won a lot of money?',
+            tags: ['money', 'imagination']
+        }, {
+            q: 'Describe your dream job. Where would you work?',
+            tags: ['work', 'future']
+        }, {
+            q: 'How often do you go shopping? What do you buy?',
+            tags: ['shopping', 'routine']
+        }, {
+            q: 'What is your favorite place in your city or town?',
+            tags: ['places', 'opinion']
+        }, {
+            q: 'Do you think it is important to exercise? Why?',
+            tags: ['health', 'opinion']
+        }, {
+            q: 'What did you eat for breakfast today?',
+            tags: ['food', 'daily routine']
+        }, {
+            q: 'Have you ever lost something important? What happened?',
+            tags: ['experience', 'past tense']
+        }, {
+            q: 'What do you usually do in the evening?',
+            tags: ['daily routine', 'time']
+        }, {
+            q: 'Do you prefer to study alone or with others? Why?',
+            tags: ['education', 'opinion']
+        }, {
+            q: 'What kind of movies or TV shows do you like?',
+            tags: ['hobbies', 'opinion']
+        }, {
+            q: 'How do you feel when it rains all day?',
+            tags: ['weather', 'emotions']
+        }, ];
+
+        // ─── Scenarios (unchanged) ───
+        const scenarios = [{
+            icon: '✈️',
+            title: 'Havalimanında',
+            desc: 'Pasaportunuz ve biletinizle havalimanındasınız. Uçuşunuz gecikti, bu yüzden bir kahve alıp ailenizi telefonla arıyorsunuz. Kapı numaranızı ekrandan kontrol ediyorsunuz.',
+            words: ['airport', 'passport', 'ticket', 'delay', 'phone', 'screen', 'flight']
+        }, {
+            icon: '🍽️',
+            title: 'Restoranda',
+            desc: 'Oturup menüye bakıyorsunuz. Garson siparişinizi alıyor. Lezzetli bir yemek seçiyorsunuz. Yemekten sonra kartınızla ödeme yapıp fişi alıyorsunuz.',
+            words: ['restaurant', 'menu', 'order', 'delicious', 'pay', 'card', 'receipt']
+        }, {
+            icon: '🏥',
+            title: 'Doktora Gitmek',
+            desc: 'Baş ağrınız ve öksürüğünüz var. Doktora gidiyorsunuz, size ilaç veriyor. Gelecek hafta için randevu alıyorsunuz. Yorgunsunuz ve dinlenmeniz gerekiyor.',
+            words: ['headache', 'cough', 'doctor', 'medicine', 'appointment', 'tired', 'rest']
+        }, {
+            icon: '🛒',
+            title: 'Market Alışverişi',
+            desc: 'Yiyecek almak için markete gidiyorsunuz. Ucuz meyve ve güzel bir kek buluyorsunuz. Nakit ödeyip para üstünüzü alıyorsunuz. Eve dönüp büyük bir yemek pişiriyorsunuz.',
+            words: ['shop', 'buy', 'cheap', 'pay', 'cash', 'change', 'cook']
+        }, {
+            icon: '🏫',
+            title: 'Okulun İlk Günü',
+            desc: 'Yeni bir öğrencisiniz. Gergin ama heyecanlısınız. Öğretmeniniz ve bazı sınıf arkadaşlarınızla tanışıyorsunuz. Ev ödevi alıp ders programına bakıyorsunuz.',
+            words: ['student', 'nervous', 'excited', 'teacher', 'classmate', 'homework', 'schedule']
+        }, {
+            icon: '☀️',
+            title: 'Mükemmel Bir Gün',
+            desc: 'Hava güneşli ve ılık. Arkadaşlarınızla parka gidiyorsunuz. Piknik yapıp fotoğraf çekiyorsunuz. Herkes mutlu ve rahat.',
+            words: ['weather', 'sunny', 'park', 'friends', 'picnic', 'photos', 'happy']
+        }, {
+            icon: '💻',
+            title: 'Evden Çalışmak',
+            desc: 'Bilgisayarınızın başında oturup e-postalarınızı kontrol ediyorsunuz. Patronunuz ve iş arkadaşlarınızla video toplantısı yapıyorsunuz. Bir rapor gönderip üretken hissediyorsunuz.',
+            words: ['computer', 'email', 'video', 'meeting', 'boss', 'colleague', 'report']
+        }, {
+            icon: '🌧️',
+            title: 'Yağmurlu Bir Hafta Sonu',
+            desc: 'Dışarısı soğuk ve yağmurlu. Evde kalıp sıcak çay yapıyorsunuz. Biraz sıkılıyor ama sakinleşiyorsunuz. Bir kitap okuyup film izliyorsunuz.',
+            words: ['cold', 'rainy', 'stay home', 'bored', 'calm', 'read', 'movie']
+        }, ];
+
+        // ════════════════════════════════════════════════════════
+        //  RENDER: WORD LIST (improved visual)
+        // ════════════════════════════════════════════════════════
+
+        function renderWordList() {
+            const container = document.getElementById('wordListContainer');
+            let html = '';
+            for (const [cat, items] of Object.entries(vocabulary)) {
+                html += `<div class="category-block"><h3>${cat}</h3><div class="word-grid">`;
+                for (const item of items) {
+                    html += `
+                        <div class="word-card">
+                            <span class="w">${item.word}</span>
+                            <span class="d">${item.definition}</span>
+                        </div>
+                    `;
+                }
+                html += `</div></div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        // ════════════════════════════════════════════════════════
+        //  DRAG & DROP  (Match words to Turkish definitions)
+        // ════════════════════════════════════════════════════════
+
+        const PAIR_COUNT = 10;
+        let currentPairs = [];
+        let wordOrder = [];
+        let defOrder = [];
+        let matches = {};
+        let dropped = {};
+        let score = 0;
+        let totalPairs = 0;
+        let dragData = null;
+
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function pickRandomWords(count) {
+            const shuffled = shuffle(allWords);
+            const selected = shuffled.slice(0, count);
+            return selected.map(w => ({ word: w, def: allDefs[w] }));
+        }
+
+        function initDragDrop() {
+            currentPairs = pickRandomWords(PAIR_COUNT);
+            const uniquePairs = [];
+            const seenDefs = new Set();
+            for (const p of currentPairs) {
+                if (!seenDefs.has(p.def)) {
+                    seenDefs.add(p.def);
+                    uniquePairs.push(p);
+                }
+                if (uniquePairs.length === PAIR_COUNT) break;
+            }
+            currentPairs = uniquePairs;
+            totalPairs = currentPairs.length;
+            score = 0;
+            dropped = {};
+            matches = {};
+            for (const p of currentPairs) {
+                matches[p.word] = p.def;
+            }
+            wordOrder = shuffle(currentPairs.map(p => p.word));
+            defOrder = shuffle(currentPairs.map(p => p.def));
+            renderDragDrop();
+        }
+
+        function renderDragDrop() {
+            const wordsList = document.getElementById('ddWordsList');
+            let wHtml = '';
+            for (const word of wordOrder) {
+                const isDropped = dropped[word] || false;
+                const extra = isDropped ? 'dropped' : '';
+                const check = isDropped ? ' ✅' : '';
+                wHtml += `<div class="dd-word ${extra}" draggable="${!isDropped}" data-word="${word}">${word}${check}</div>`;
+            }
+            if (wHtml === '') wHtml = '<div class="dd-empty">🎉 Tümü eşleşti!</div>';
+            wordsList.innerHTML = wHtml;
+
+            const defsList = document.getElementById('ddDefsList');
+            let dHtml = '';
+            for (const def of defOrder) {
+                let matchedWord = null;
+                for (const [w, d] of Object.entries(matches)) {
+                    if (d === def && dropped[w]) {
+                        matchedWord = w;
+                        break;
+                    }
+                }
+                const isFilled = !!matchedWord;
+                const highlight = isFilled ? 'filled' : '';
+                const wordInsert = matchedWord ? `<span class="word-insert">${matchedWord}</span>` : '';
+                dHtml += `<div class="dd-def ${highlight}" data-def="${def}" data-matched="${matchedWord || ''}">
+                    ${wordInsert} ${def}
+                </div>`;
+            }
+            defsList.innerHTML = dHtml;
+
+            score = Object.values(dropped).filter(Boolean).length;
+            document.getElementById('ddScore').textContent = score;
+            document.getElementById('ddTotal').textContent = totalPairs;
+
+            const msg = document.getElementById('ddMessage');
+            if (score === totalPairs && totalPairs > 0) {
+                msg.className = 'dd-message success';
+                msg.textContent = '🎉 Mükemmel! Tüm kelimeleri eşleştirdiniz! Yeni set için "Yeni Set" butonuna tıklayın.';
+                msg.classList.remove('hidden');
+            } else {
+                msg.classList.add('hidden');
+            }
+
+            attachDragEvents();
+        }
+
+        function attachDragEvents() {
+            const draggables = document.querySelectorAll('.dd-word:not(.dropped)');
+            const defs = document.querySelectorAll('.dd-def:not(.filled)');
+
+            draggables.forEach(el => {
+                el.addEventListener('dragstart', handleDragStart);
+                el.addEventListener('dragend', handleDragEnd);
+            });
+
+            defs.forEach(el => {
+                el.addEventListener('dragover', handleDragOver);
+                el.addEventListener('dragenter', handleDragEnter);
+                el.addEventListener('dragleave', handleDragLeave);
+                el.addEventListener('drop', handleDrop);
+            });
+        }
+
+        function handleDragStart(e) {
+            const word = e.target.dataset.word;
+            if (dropped[word]) {
+                e.preventDefault();
+                return;
+            }
+            dragData = { word };
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', word);
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            document.querySelectorAll('.dd-def.highlight').forEach(el => el.classList.remove('highlight'));
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDragEnter(e) {
+            e.preventDefault();
+            if (!e.target.classList.contains('filled')) {
+                e.target.classList.add('highlight');
+            }
+        }
+
+        function handleDragLeave(e) {
+            e.target.classList.remove('highlight');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const defEl = e.target.closest('.dd-def');
+            if (!defEl) return;
+            if (defEl.classList.contains('filled')) return;
+
+            const word = e.dataTransfer.getData('text/plain');
+            if (!word || dropped[word]) return;
+
+            const def = defEl.dataset.def;
+            const correctDef = matches[word];
+
+            if (def === correctDef) {
+                dropped[word] = true;
+                wordOrder = wordOrder.filter(w => w !== word);
+                defEl.classList.add('filled');
+                defEl.classList.remove('highlight');
+                defEl.dataset.matched = word;
+                renderDragDrop();
+                const msg = document.getElementById('ddMessage');
+                if (Object.values(dropped).filter(Boolean).length === totalPairs) {
+                    msg.className = 'dd-message success';
+                    msg.textContent = '🎉 Mükemmel! Tüm kelimeleri eşleştirdiniz! Yeni set için "Yeni Set" butonuna tıklayın.';
+                    msg.classList.remove('hidden');
+                }
+            } else {
+                const wordEl = document.querySelector(`.dd-word[data-word="${word}"]`);
+                if (wordEl) {
+                    wordEl.classList.add('wrong');
+                    setTimeout(() => wordEl.classList.remove('wrong'), 500);
+                }
+                defEl.classList.add('wrong');
+                setTimeout(() => defEl.classList.remove('wrong'), 500);
+            }
+            document.querySelectorAll('.dd-def.highlight').forEach(el => el.classList.remove('highlight'));
+        }
+
+        document.getElementById('ddNewSet').addEventListener('click', initDragDrop);
+        document.getElementById('ddReset').addEventListener('click', initDragDrop);
+
+        // ════════════════════════════════════════════════════════
+        //  RENDER: SPEAKING QUESTIONS
+        // ════════════════════════════════════════════════════════
+
+        function renderSpeaking() {
+            const container = document.getElementById('speakingContainer');
+            let html = '<div class="sq-grid">';
+            speakingQuestions.forEach((item, idx) => {
+                const tags = item.tags.map(t => `<span>${t}</span>`).join('');
+                html += `
+                    <div class="sq-item">
+                        <div class="sq-text"><span class="sq-num">#${idx+1}</span> ${item.q}</div>
+                        <div class="sq-tags">${tags}</div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // ════════════════════════════════════════════════════════
+        //  RENDER: SCENARIOS
+        // ════════════════════════════════════════════════════════
+
+        function renderScenarios() {
+            const container = document.getElementById('scenariosContainer');
+            let html = '<div class="scenario-grid">';
+            for (const sc of scenarios) {
+                const wordTags = sc.words.map(w => `<span>${w}</span>`).join('');
+                html += `
+                    <div class="scenario-card">
+                        <div class="sc-icon">${sc.icon}</div>
+                        <h4>${sc.title}</h4>
+                        <div class="sc-desc">${sc.desc}</div>
+                        <div class="sc-words">${wordTags}</div>
+                    </div>
+                `;
+            }
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // ════════════════════════════════════════════════════════
+        //  TAB SWITCHING
+        // ════════════════════════════════════════════════════════
+
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const panels = {
+            list: document.getElementById('panel-list'),
+            dragdrop: document.getElementById('panel-dragdrop'),
+            speaking: document.getElementById('panel-speaking'),
+            scenarios: document.getElementById('panel-scenarios'),
+        };
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const tab = btn.dataset.tab;
+                Object.values(panels).forEach(p => p.classList.remove('active'));
+                panels[tab].classList.add('active');
+                if (tab === 'dragdrop') {
+                    renderDragDrop();
+                }
+            });
+        });
+
+        // ════════════════════════════════════════════════════════
+        //  INIT
+        // ════════════════════════════════════════════════════════
+
+        renderWordList();
+        initDragDrop();
+        renderSpeaking();
+        renderScenarios();
+
+        document.querySelector('[data-tab="dragdrop"]').addEventListener('click', () => {
+            setTimeout(renderDragDrop, 100);
+        });
+
+        console.log('✅ A2+ Kelime Öğrenme Aracı yüklendi — 250 kelime, sürükle‑bırak, konuşma, senaryolar!');
+    </script>
+
+</body>
+</html>
